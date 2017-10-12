@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Blog Time!</h1>
+<ul>
+{% for post in posts %}
+<li><a href="/post/{{ post.title }}">{{ post.title }}</a></li>
+<p>{{ post.content }}</p>
+{% endfor %}
+{% endblock %}
+
