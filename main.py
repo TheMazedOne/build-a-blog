@@ -19,9 +19,7 @@ class Blog(db.Model):
         self.date_posted = date_posted
         self.content = content
 
-    def __repr__(self):
-        return '<Blog %r>'    
-        
+            
 
 @app.route('/')
 def index():
@@ -36,11 +34,11 @@ def add():
 def blog():
     posts = Blog.query.order_by(Blog.date_posted.desc()).all()
 
-    return render_template('blog.html', posts=posts)
-@app.route('/post/<title>')
-def post(title):
-    hope = Blog.query.filter_by(title=title).first()
-    return render_template('post.html', hope=hope)
+    return render_template('blog.html', posts=posts,)
+@app.route('/blog<id>')
+def post(id):
+    post = Blog.query.get(id)
+    return render_template('post.html', post=post)
 
 @app.route('/addpost', methods=['GET', 'POST'])
 def addpost():
